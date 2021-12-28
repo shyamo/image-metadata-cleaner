@@ -6,7 +6,9 @@ from exif import Image
 from PIL import Image
 from PIL.ExifTags import TAGS
 
-ERR_NO_FOLDER_PROVIDED = "please provide folder with image(s) as a parameter"
+ERR_NO_FOLDER_PROVIDED = "WARNING: please provide folder with image(s) as a parameter"
+ERR_INVALID_FILE = "WARNING: Not an image: "
+SUCCESS_MSG = "\nProcess completed without errors"
 
 def check_folder_provided():
     if len(sys.argv) > 1:
@@ -17,29 +19,33 @@ def remove_image_metadata():
     image_folder = sys.argv[1]
 
     try:
-        for file in os.listdir(image_folder):
-
-            if imghdr.what(file, None):
-                image = Image.open(file)
+        image_absolute_path = [item for item in (os.path.join(image_folder, folder) for folder in os.listdir(image_folder)) 
+            if os.path.isfile(item)]
+        for file in image_absolute_path:
+            filename = os.path.basename(file)
+            if imghdr.what(filename, None):
+                image = Image.open(filename)
                 image.convert('RGB')
                 exif_data = image.getexif()
 
                 for tagid in exif_data:
                     tagname = TAGS.get(tagid, tagid)
                     value = exif_data.get(tagid)
-                    print(f"{file:50} {tagname:25} {value}")
+                    print(f"{filename:50} {tagname:25} {value}")
 
-                formatted_filename = "f_" + str(file)
+                formatted_filename = "f_" + str(filename)
                 data = list(image.getdata())
 
                 if image.mode in ("RGBA", "P"): image = image.convert("RGB")
                 cleaned_image = Image.new(image.mode, image.size)
                 cleaned_image.putdata(data)
                 cleaned_image.save(formatted_filename)
+            else:
+                print(ERR_INVALID_FILE + filename)
     except NameError:
         print('error: ' + NameError)
     else:
-        print('Process completed without errors')
+        print(SUCCESS_MSG)
 
 def process_images():
     if check_folder_provided():
