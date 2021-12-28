@@ -46,7 +46,7 @@ def remove_image_metadata():
     except NameError:
         print('error: ' + NameError)
     else:
-        PROCESS_COUNT = " Processed " +  str(counter) + " files."
+        PROCESS_COUNT = " Processed " +  str(counter) + " file(s)."
         print(SUCCESS_MSG + PROCESS_COUNT)
 
 def process_images():
