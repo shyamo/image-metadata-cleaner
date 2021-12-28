@@ -17,7 +17,7 @@
  
  **How to run the script**
  ```
- python index.py <FOLDER_LOCATION>
+ python index.py <ABSOLUTE_PATH_TO_FOLDER>
  ```
  1. It will find the image files in the folder and attempt to remove EXIF data.
  2. It will list any EXIF metadata onto the console which includes, `filename`, `attribute` and `value`.
