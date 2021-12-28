@@ -30,7 +30,6 @@ def remove_image_metadata():
                     print(f"{file:50} {tagname:25} {value}")
 
                 formatted_filename = "f_" + str(file)
-                print(file, formatted_filename)
                 data = list(image.getdata())
 
                 if image.mode in ("RGBA", "P"): image = image.convert("RGB")
