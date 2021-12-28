@@ -6,7 +6,7 @@ from exif import Image
 from PIL import Image
 from PIL.ExifTags import TAGS
 
-ERR_NO_FOLDER_PROVIDED = "WARNING: please provide folder with image(s) as a parameter."
+ERR_NO_FOLDER_PROVIDED = "WARNING: please provide folder with image(s) as a parameter. e.g. python index.py <ABSOLUTE_PATH_TO_FOLDER>"
 ERR_INVALID_FILE = "WARNING: Not an image: "
 SUCCESS_MSG = "\nProcess completed without errors."
 
