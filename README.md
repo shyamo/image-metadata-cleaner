@@ -1,4 +1,6 @@
 # Image Metadata Cleaner
+ Why did i create this?..... Privacy!
+ 
  Images contain a lot of metadata which you may not be aware of. This tool strips out all that metadata linked to the image and create a new one in the same folder.
  Please see https://www.exiftool.org/TagNames/EXIF.html for list of potential metadata that could be in your image.
  
