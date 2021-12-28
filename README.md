@@ -1,6 +1,4 @@
-# Image Metadata Cleaner
- Why did i create this?..... Privacy!
- 
+# Image Metadata Cleaner 
  Images contain a lot of metadata which you may not be aware of. This tool strips out all that metadata linked to the image and create a new one in the same folder.
  Please see https://www.exiftool.org/TagNames/EXIF.html for list of potential metadata that could be in your image.
  
@@ -12,11 +10,11 @@
  ```
  
  Notes:
- I had an issue where PIL package was not recongnized. If you have multiple version of python on your machine, I added an alias to my `.zshrc` file referencing the python3 like below:
+ If you're having an issue where `PIL` package is not recognized or have multiple version of python on your machine, add an alias to your bash or `.zshrc` file referencing the python3 like below:
  ```
  alias python='/usr/local/bin/python3'
  ```
- and set my default to python 3.10. This seemed to fix the issue related to not being able to add packages.
+ and set your default to python 3.10.
  
  **How to run the script**
  ```
