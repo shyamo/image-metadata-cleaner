@@ -21,8 +21,10 @@ def remove_image_metadata():
     try:
         image_absolute_path_arr = [item for item in (os.path.join(image_folder, folder) for folder in os.listdir(image_folder)) 
             if os.path.isfile(item)]
+
         for file in image_absolute_path_arr:
             filename = os.path.basename(file)
+
             if imghdr.what(filename, None):
                 image = Image.open(filename)
                 image.convert('RGB')
@@ -36,7 +38,11 @@ def remove_image_metadata():
                 formatted_filename = "f_" + str(filename)
                 data = list(image.getdata())
 
-                if image.mode in ("RGBA", "P"): image = image.convert("RGB")
+                split_filename = os.path.splitext(filename)
+                file_extension = split_filename[1]
+
+                if image.mode in ("RGBA", "P") and file_extension != '.png':
+                    image = image.convert("RGB")
                 cleaned_image = Image.new(image.mode, image.size)
                 cleaned_image.putdata(data)
                 cleaned_image.save(formatted_filename)
