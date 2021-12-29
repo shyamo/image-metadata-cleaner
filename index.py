@@ -19,8 +19,11 @@ def remove_image_metadata():
     image_folder = sys.argv[1]
     counter = 0
     try:
-        image_absolute_path_arr = [item for item in (os.path.join(image_folder, folder) for folder in os.listdir(image_folder)) 
-            if os.path.isfile(item)]
+        image_absolute_path_arr = [
+            item for item in (os.path.join(image_folder, folder) 
+            for folder in os.listdir(image_folder)) 
+            if os.path.isfile(item)
+        ]
 
         for file in image_absolute_path_arr:
             filename = os.path.basename(file)
