@@ -23,5 +23,7 @@
  2. It will list any EXIF metadata onto the console which includes, `filename`, `attribute` and `value`.
  3. A new image file is created with a prefix `f_` in the same folder.
 
+![Output example from CLI](https://raw.githubusercontent.com/shyamo/image-metadata-cleaner/master/assets/example-cli.png)
+
 **Disclaimer**
 The purpose of this tool is to remove all EXIR metadata from your images. I am not responsible if your original images change in anyway or become corrupt or even if  metadata is not removed from the image. 
