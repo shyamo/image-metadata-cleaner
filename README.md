@@ -8,6 +8,11 @@
   from PIL.ExifTags import TAGS
  ```
  
+Install dependancies above via PIP e.g.
+```
+pip install exif
+```
+ 
  Notes:
  If you're having an issue where `PIL` package is not recognized or have multiple version of python on your machine, add an alias to your bash or `.zshrc` file referencing the python3 like below:
  ```
