@@ -7,8 +7,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 
 ERR_NO_FOLDER_PROVIDED = "WARNING: please provide folder with image(s) as a parameter. e.g. python index.py <ABSOLUTE_PATH_TO_FOLDER>"
-ERR_INVALID_FILE = "WARNING: Not an image: "
-SUCCESS_MSG = "\nProcess completed without errors."
+ERR_INVALID_FILE = "SKIPPING: "
 
 def check_folder_provided():
     if len(sys.argv) > 1:
@@ -36,7 +35,7 @@ def remove_image_metadata():
                 for tagid in exif_data:
                     tagname = TAGS.get(tagid, tagid)
                     value = exif_data.get(tagid)
-                    print(f"{filename:50} {tagname:25} {value}")
+                    print(f"File: {filename:50} {tagname:20}: {value}")
 
                 formatted_filename = "f_" + str(filename)
                 data = list(image.getdata())
@@ -55,8 +54,8 @@ def remove_image_metadata():
     except NameError:
         print('error: ' + NameError)
     else:
-        PROCESS_COUNT = " Processed " +  str(counter) + " file(s)."
-        print(SUCCESS_MSG + PROCESS_COUNT)
+        PROCESS_COUNT = "Processed " +  str(counter) + " file(s)."
+        print(PROCESS_COUNT)
 
 def process_images():
     if check_folder_provided():
